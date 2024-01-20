@@ -21,7 +21,7 @@ const WritePost = () => {
 
   const [open,setOpen] = useState(false)
   const [value,setValue] = useState("")
-  const [file,setFile] = useState(null)
+  const [file,setFile] = useState("")
   const [media,setMedia] = useState("")
   const [title,setTitle] = useState("")
   const [catSlug,setCatSlug] = useState("")
@@ -43,10 +43,10 @@ const WritePost = () => {
     setProgress(progress)
     switch (snapshot.state) {
       case 'paused':
-      //  setProgress('paused')
+      console.log('paused')
         break;
       case 'running':
-        // setProgress('running')
+        console.log('running')
         break;
     }
   }, 
@@ -131,7 +131,7 @@ const WritePost = () => {
                    
             </div>
             )}
-            {typeof window !== 'undefined' && (
+            {typeof window !== 'undefined' && typeof document !== 'undefined' && (
             <ReactQuill
             theme='snow'
             value={value}
