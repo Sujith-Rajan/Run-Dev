@@ -4,7 +4,7 @@ import styles from './cardList.module.scss'
 
 const getData = async(page,cat) => {
   try{
-        const res = await fetch(`http://localhost:3000/api/post?page=${page}&cat=${cat || ""}`,{
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/post?page=${page}&cat=${cat || ""}`,{
           cache:'no-store'
         })
         return res.json()

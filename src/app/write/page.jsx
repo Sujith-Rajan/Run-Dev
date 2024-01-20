@@ -80,7 +80,7 @@ const WritePost = () => {
           return setEmpty("Some Field are  missing *")
         }
         const sanitizeContent = new DOMParser().parseFromString(value,'text/html').body.textContent
-      const res = await fetch("api/post",{
+      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/post`,{
         method: "POST",
         body: JSON.stringify({
           slug: title,

@@ -4,16 +4,16 @@ const Featured = () => {
   return (
     <div className={styles.container}>
         <h1 className={styles.title}>
-            <b>Run Dev,</b> Exploring the Tech Universe – Your Guide to Innovation and Development
+            <b>Run Dev,</b> StyleStrive: Unleashing the Fusion of Fashion, Food, Travel, and Code
         </h1>
         <div className={styles.post}>
             <div className={styles.imgContainer}>
-                <Image src="/dell-laptop.jpeg" fill className={styles.image} alt='featured image'></Image>
+                <Image src="/blog-feture.webp" fill className={styles.image} alt='featured image'></Image>
             </div>
             <div className={styles.textContainer}>
-                <h2 className={styles.postTitle}>Full stack developer Road map</h2>
+                <h2 className={styles.postTitle}>Where Trends, Tastes, and Code Converge in a Stylish Odyssey</h2>
                 <p className={styles.postDesc}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nam debitis ut maiores harum beatae, tempora reprehenderit dignissimos suscipit magni. Aperiam labore tenetur ex. Placeat error exercitationem voluptatem corrupti! Asperiores.
+                Embark on a dynamic journey through the realms of style, fashion, food, travel, and coding. Where passion meets pixels, and every step is a stride towards a well-curated life of innovation and inspiration.
                 </p>
                 <button className={styles.button}>Read More</button>
             </div>

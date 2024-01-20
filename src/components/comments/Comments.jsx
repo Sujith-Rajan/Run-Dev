@@ -26,7 +26,7 @@ const Comments =({postSlug}) => {
     const {status} = useSession()
     
     const {data,mutate,isLoading} = useSwr(
-        `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+        `${process.env.NEXTAUTH_URL}/api/comments?postSlug=${postSlug}`,
         fetcher)
 
     const [addComment,setAddComment] = useState("")

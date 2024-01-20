@@ -6,7 +6,7 @@ import { FaEye } from "react-icons/fa";
 
 const getData = async(slug) => {
     try{
-        const res = await fetch(`http://localhost:3000/api/post/${slug}`,{
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/post/${slug}`,{
           cache:'no-store'
         })
         return res.json()

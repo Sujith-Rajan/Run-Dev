@@ -5,7 +5,7 @@ import Link from 'next/link'
 const getData = async() => {
 
     try{
-        const res = await fetch("http://localhost:3000/api/popularItmes")
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/popularItmes`)
         return res.json()
     }
     catch(err){

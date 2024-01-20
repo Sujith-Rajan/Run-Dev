@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const getData = async() => {
   try{
-        const res = await fetch("http://localhost:3000/api/categories",{
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`,{
           cache:'no-store'
         })
         return res.json()

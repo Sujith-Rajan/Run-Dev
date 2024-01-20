@@ -15,7 +15,7 @@ const Footer = () => {
           <FaHeadSideVirus />
            <span>RUNDEV</span>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo atque, cum quo ut nemo cumque provident, dolore nihil nostrum rem non esse doloribus beatae blanditiis ratione harum repellat omnis accusamus.</p>
+          <p> Embark on a dynamic journey through the realms of style, fashion, food, travel, and coding. Where passion meets pixels, and every step is a stride towards a well-curated life of innovation and inspiration.</p>
           <div className={styles.social}>
         <FaFacebook style={{color:'blue'}}/>
         <FaInstagram style={{color:'red'}}/>
