@@ -19,7 +19,7 @@ const Footer = () => {
           <div className={styles.social}>
         <FaFacebook style={{color:'blue'}}/>
         <FaInstagram style={{color:'red'}}/>
-        <FaGithub />
+        <Link href='/https://github.com/Sujith-Rajan'><FaGithub /></Link>
         <FaLinkedin  style={{color:'blue'}}/>
         </div>
         </div>
@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
             <div className={styles.pages}>
             <span className={styles.linkTitle}>Dev</span>
-            <Link href='/'>Github</Link>
+            <Link href='/https://github.com/Sujith-Rajan'>Github</Link>
             <Link  href='/'>Dribble</Link>
             </div>
         </div>

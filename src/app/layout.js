@@ -2,6 +2,7 @@ import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar/Navbar.jsx";
 import Footer from "../components/footer/Footer.jsx";
+import Devops from "../components/developerArea/Devops.jsx"
 import { ThemeContextProvider } from "../context/ThemeContext.jsx";
 import ThemeProvider from "../provider/ThemeProvider.jsx";
 import AuthProvider from '../provider/AuthProvider.jsx'
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
                                 <Navbar/>
                                 {children}
                                 <Footer />
+                                <Devops/>
                             </div>
                         </div>
                     </ThemeProvider>
