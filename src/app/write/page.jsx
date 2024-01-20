@@ -6,16 +6,18 @@ import { BiSolidImageAdd } from "react-icons/bi"
 import { FaUpload } from "react-icons/fa6";
 import { MdOutlineOndemandVideo } from "react-icons/md"
 import { useEffect, useState } from 'react';
-import ReactQuill from 'react-quill'
+
 import 'quill/dist/quill.snow.css'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import {app} from '../../utils/firebase'
+import dynamic from 'next/dynamic'
 
 const storage = getStorage(app);
-
+const ReactQuillNoSSR = dynamic(() => import('react-quill'), { ssr: false });
 const WritePost = () => {
+ 
   const {status} = useSession()
   const router = useRouter()
 
@@ -132,7 +134,7 @@ const WritePost = () => {
             </div>
             )}
             {typeof window !== 'undefined' && typeof document !== 'undefined' && (
-            <ReactQuill
+            <ReactQuillNoSSR
             theme='snow'
             value={value}
             onChange={setValue}
