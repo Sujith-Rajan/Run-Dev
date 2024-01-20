@@ -1,0 +1,106 @@
+.container{
+    margin-top: 60px;
+
+.infoContainer{
+    display: flex;
+  align-items: center;
+  gap: 50px;
+  .textContainer{
+    flex: 1;
+    .title{
+        font-size: 64px;
+        margin-bottom: 50px;
+    }
+    .user{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .userImgContainer{
+            width: 50px;
+            height: 50px;
+            position: relative;
+          
+            .avatar{
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+        .userTextContainer{
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            .username{
+                font-size: 20px;
+                font-weight: 500;
+            }
+          
+        }
+    }
+  }
+  .imgContainer{
+    flex: 1;
+    position: relative;
+    height: 350px;
+    .image{
+        object-fit: contain;
+    }
+  }
+}
+.content {
+    display: flex;
+    gap: 50px;
+    .post {
+        flex: 5;
+        margin-top: 60px;
+        .description p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 20px;
+          }
+          .views{
+            margin-top: 20px;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            font-size: 18px;
+          }
+      }
+  }
+}
+
+@media screen and (max-width: 1536px) {
+    .title {
+      font-size: 54px;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .title {
+      font-size: 48px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .imageContainer {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 650px) {
+    .infoContainer{
+        flex-direction: column;
+    }
+    .container .infoContainer .textContainer .title {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .container .content{
+    
+      flex-direction: column;
+    }
+    .container .infoContainer .textContainer .user .userTextContainer .username, .date{
+      font-size: 15px;
+    }
+    .container .infoContainer .textContainer .user .userImgContainer{
+      width: 25px;
+      height: 25px;
+    }
+}
+

@@ -1,0 +1,55 @@
+.container{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 60px;
+   .wrapper{
+    padding: 120px 160px;
+    background-color: rgba(10, 0, 0, 0.189);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .title{
+        text-align: center;
+        color: gray;
+    }
+    .socialButton{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 20px;
+        border-radius: 5px;
+        gap: 20px;
+        border: 1px solid crimson;
+        
+        .icon{
+            font-size: 32px;
+        }
+        p{
+            color: white;
+        }
+    }
+    .socialButton:first-child {
+        background-color: #13131378;
+      }
+      
+      .socialButton:nth-child(2) {
+        background-color: #691d1d65;
+      }
+      
+      .socialButton:nth-child(3) {
+        background-color: #087dea6d;
+      }
+   }
+}
+
+@media screen and (max-width: 650px){
+
+  .socialButton{
+    width: 200px;
+    font-size: 12px;
+    padding: 5px !important;
+  }
+}

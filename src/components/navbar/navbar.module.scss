@@ -1,0 +1,35 @@
+
+.container{
+    display: flex;
+    position: relative;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    .logo{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+    }
+    .links{
+        display: flex;
+        gap: 15px;
+        font-size: 20px;
+        font-weight: 400;
+        align-items: center;
+      
+    }
+
+    
+
+    @media screen and (max-width: 650px){
+        .links{
+            justify-content: flex-end;
+           
+           
+        }
+        .navLink{
+            display: none;
+        }
+
+    }
