@@ -131,13 +131,15 @@ const WritePost = () => {
                    
             </div>
             )}
+            {typeof window !== 'undefined' && (
             <ReactQuill
             theme='snow'
             value={value}
             onChange={setValue}
             className={styles.quil}
             placeholder='Tell your story...'/>
-
+            )
+            }
         </div>
         <button className={styles.publish} onClick={handleSubmit}>
             Publish
