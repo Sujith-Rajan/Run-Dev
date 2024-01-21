@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import useSwr from 'swr'
 import { useState } from 'react'
 
+
 const fetcher = async (url) => {
     try{
     const res = await fetch(url)
@@ -26,7 +27,7 @@ const Comments =({postSlug}) => {
     const {status} = useSession()
     
     const {data,mutate,isLoading} = useSwr(
-        `${process.env.NEXTAUTH_URL}/api/comments?postSlug=${postSlug}`,
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/comments?postSlug=${postSlug}`,
         fetcher)
 
     const [addComment,setAddComment] = useState("")
@@ -36,6 +37,7 @@ const Comments =({postSlug}) => {
             method:"POST",
             body: JSON.stringify({addComment,postSlug})
         })
+        
         mutate();
     }
     
@@ -64,8 +66,8 @@ const Comments =({postSlug}) => {
         <div className={styles.comments}>
             {isLoading  ? <p>Loading</p>
             :
-               data?.map((item) => (
-                <div className={styles.comment} key={item._id}>
+               data?.map((item,index) => (
+                <div className={styles.comment} key={item._id || index}>
                     <div className={styles.user}>
                         <Image src={item?.user?.image} alt='user image' width={40} height={40} className={styles.image}></Image>
                         <div className={styles.userInfo}>

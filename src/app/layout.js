@@ -6,6 +6,8 @@ import Devops from "../components/developerArea/Devops.jsx"
 import { ThemeContextProvider } from "../context/ThemeContext.jsx";
 import ThemeProvider from "../provider/ThemeProvider.jsx";
 import AuthProvider from '../provider/AuthProvider.jsx'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const ubuntu = Ubuntu({
@@ -27,9 +29,10 @@ export default function RootLayout({ children }) {
                 <AuthProvider>
                 <ThemeContextProvider>
                     <ThemeProvider>
-                        <div className="container">
+                             <div className="container">
                             <div className="wrapper">
                                 <Navbar/>
+                                <ToastContainer position="top-center" theme="dark" autoClose={3000}/>
                                 {children}
                                 <Footer />
                                 <Devops/>

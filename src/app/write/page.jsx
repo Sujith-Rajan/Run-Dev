@@ -1,10 +1,8 @@
 "use client"
 import styles from './writePage.module.scss'
 
-import { IoMdAddCircleOutline } from "react-icons/io"
-import { BiSolidImageAdd } from "react-icons/bi"
-import { FaUpload } from "react-icons/fa6";
-import { MdOutlineOndemandVideo } from "react-icons/md"
+
+import { FaCloudUploadAlt } from "react-icons/fa"
 import { useEffect, useState } from 'react';
 
 import 'quill/dist/quill.snow.css'
@@ -13,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import {app} from '../../utils/firebase'
 import dynamic from 'next/dynamic'
+import {toast} from 'react-toastify'
 
 const storage = getStorage(app);
 const ReactQuillNoSSR = dynamic(() => import('react-quill'), { ssr: false });
@@ -21,7 +20,6 @@ const WritePost = () => {
   const {status} = useSession()
   const router = useRouter()
 
-  const [open,setOpen] = useState(false)
   const [value,setValue] = useState("")
   const [file,setFile] = useState("")
   const [media,setMedia] = useState("")
@@ -41,16 +39,9 @@ const WritePost = () => {
      (snapshot) => {
     
     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
+  
     setProgress(progress)
-    switch (snapshot.state) {
-      case 'paused':
-      console.log('paused')
-        break;
-      case 'running':
-        console.log('running')
-        break;
-    }
+   
   }, 
   (error) => {
     
@@ -72,6 +63,7 @@ const WritePost = () => {
   
     if (status === "unauthenticated") {
       router.push("/");
+      router.refresh()
     }
 
    
@@ -82,7 +74,7 @@ const WritePost = () => {
           return setEmpty("Some Field are  missing *")
         }
         const sanitizeContent = new DOMParser().parseFromString(value,'text/html').body.textContent
-      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/post`,{
+      const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/post`,{
         method: "POST",
         body: JSON.stringify({
           slug: title,
@@ -94,6 +86,7 @@ const WritePost = () => {
       })
       if(res.status === 200){
         const data = await res.json()
+        toast.success("New post created")
         router.push(`/posts/${data.slug}`)
         router.refresh()
       }
@@ -110,6 +103,7 @@ const WritePost = () => {
      
         <input type="text" placeholder='Post Title' className={styles.input} onChange={(e)=>setTitle(e.target.value)}/>
         <select className={styles.select} onChange={(e)=>setCatSlug(e.target.value)}>
+        <option value="">Select Catogery</option>
         <option value="style">style</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
@@ -118,21 +112,23 @@ const WritePost = () => {
         <option value="coding">coding</option>
         </select>
         <div className={styles.editor}>
-             <IoMdAddCircleOutline className={styles.plusButton} onClick={()=>setOpen(!open)}/>
-             {open && (
+            
+           
             <div className={styles.add}>
                 <input type="file" 
                  style={{zIndex:'99',opacity:'0'}}
                  onChange={(e)=>setFile(e.target.files[0])}/>
                  <div className={styles.addIconButtonGroud}>
-                    <BiSolidImageAdd className={styles.addButton} />
-                    <FaUpload className={styles.addButton}/>
-                    <MdOutlineOndemandVideo className={styles.addButton}/>
+                    <FaCloudUploadAlt className={styles.addButton} title="Choose an image " />
+                    <span>Upload Image</span>
                     {progress && <p className={styles.progress}>Uploading {progress ? `${progress}% done`: 'paused'} </p>}  
-                    </div>
                    
+                    </div>
+                    <button className={styles.publish} onClick={handleSubmit}>
+            Publish
+        </button>
             </div>
-            )}
+           
             {typeof window !== 'undefined' && typeof document !== 'undefined' && (
             <ReactQuillNoSSR
             theme='snow'
@@ -143,9 +139,7 @@ const WritePost = () => {
             )
             }
         </div>
-        <button className={styles.publish} onClick={handleSubmit}>
-            Publish
-        </button>
+    
     </div>
   )
 }

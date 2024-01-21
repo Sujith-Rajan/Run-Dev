@@ -8,8 +8,10 @@
     color: orange;
     top:20px;
   }
-  
-
+  .select{
+    border-radius: 50px;
+    height: 40px;
+  }
   .input {
     padding: 50px;
     font-size: 64px;
@@ -61,11 +63,16 @@
 
       .addIconButtonGroud {
         position: absolute;
-        top: 10px;
+        top: 0px;
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 10px;
         cursor: pointer;
+        .addButton{
+          font-size: 25px;
+          cursor: pointer;
+        }
         .progress{
        
           font-size: 15px;
@@ -79,21 +86,22 @@
     }
     .quil{
       width: 100vh;
-      height: 20vh;
+      
       margin-top: 50px;
     }
 
   }
   .publish {
     position: absolute;
-    top: 40px;
-    right: -100px;
+    left: 80vh;
+    width:max-content;
     padding: 10px 20px;
     border: none;
     border-radius: 20px;
     background-color: rgba(155, 155, 247, 0.916);
     color: white;
     font-weight: 700;
+    cursor: pointer;
   }
 }
 
